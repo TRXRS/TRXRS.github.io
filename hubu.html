@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>湖北大学 - 欢迎您</title>
+    <!-- 引入Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 引入Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- 引入Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
+    <!-- 配置Tailwind自定义颜色和字体 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0A4DA2', // 湖北大学主色调-蓝色
+                        secondary: '#E6A23C', // 辅助色-金色
+                        dark: '#333333',
+                        light: '#F5F7FA',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <!-- 自定义工具类 -->
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            .text-shadow-lg {
+                text-shadow: 0 4px 8px rgba(0,0,0,0.12), 0 2px 4px rgba(0,0,0,0.08);
+            }
+            .transition-navbar {
+                transition: background-color 0.3s, padding 0.3s, box-shadow 0.3s;
+            }
+        }
+    </style>
+    <style>
+        /* 基础动画效果 */
+        .fade-in {
+            animation: fadeIn 0.8s ease-in forwards;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* 平滑滚动 */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* 图片悬停效果 */
+        .img-hover-zoom {
+            overflow: hidden;
+        }
+        
+        .img-hover-zoom img {
+            transition: transform 0.5s ease;
+        }
+        
+        .img-hover-zoom:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* 导航栏滚动效果 */
+        .navbar-scrolled {
+            background-color: rgba(255, 255, 255, 0.98);
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="font-sans text-dark bg-light">
+    <!-- 导航栏 -->
+    <nav id="navbar" class="fixed w-full z-50 transition-navbar py-4 bg-transparent">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="flex justify-between items-center">
+                <!-- 学校Logo和名称 -->
+                <a href="#" class="flex items-center space-x-2">
+                    <img src="https://picsum.photos/id/101/60/60" alt="湖北大学校徽" class="h-10 w-10 rounded-full">
+                    <span class="text-xl font-bold text-white text-shadow-lg">湖北大学</span>
+                </a>
+                
+                <!-- 桌面导航菜单 -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-white hover:text-secondary transition-colors font-medium">首页</a>
+                    <a href="#about" class="text-white hover:text-secondary transition-colors font-medium">学校简介</a>
+                    <a href="#campus" class="text-white hover:text-secondary transition-colors font-medium">校园风光</a>
+                    <a href="#colleges" class="text-white hover:text-secondary transition-colors font-medium">学院设置</a>
+                    <a href="#admissions" class="text-white hover:text-secondary transition-colors font-medium">招生信息</a>
+                    <a href="#contact" class="text-white hover:text-secondary transition-colors font-medium">联系我们</a>
+                </div>
+                
+                <!-- 移动端菜单按钮 -->
+                <button id="menu-toggle" class="md:hidden text-white text-2xl">
+                    <i class="fa fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- 移动端导航菜单 -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg absolute w-full">
+            <div class="container mx-auto px-4 py-3 flex flex-col space-y-3">
+                <a href="#home" class="text-primary hover:text-secondary py-2 transition-colors">首页</a>
+                <a href="#about" class="text-primary hover:text-secondary py-2 transition-colors">学校简介</a>
+                <a href="#campus" class="text-primary hover:text-secondary py-2 transition-colors">校园风光</a>
+                <a href="#colleges" class="text-primary hover:text-secondary py-2 transition-colors">学院设置</a>
+                <a href="#admissions" class="text-primary hover:text-secondary py-2 transition-colors">招生信息</a>
+                <a href="#contact" class="text-primary hover:text-secondary py-2 transition-colors">联系我们</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 英雄区域 -->
+    <section id="home" class="relative h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://picsum.photos/id/1031/1920/1080" alt="湖北大学校园风光" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-primary/50"></div>
+        </div>
+        <div class="container mx-auto px-4 z-10 text-center">
+            <h1 class="text-[clamp(2.5rem,8vw,5rem)] font-bold text-white mb-6 leading-tight text-shadow-lg fade-in">
+                欢迎来到湖北大学
+            </h1>
+            <p class="text-[clamp(1rem,3vw,1.5rem)] text-white mb-10 max-w-3xl mx-auto text-shadow fade-in" style="animation-delay: 0.2s">
+                博学 笃行 立己 达人
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4 fade-in" style="animation-delay: 0.4s">
+                <a href="#about" class="bg-secondary hover:bg-secondary/90 text-white font-semibold px-8 py-3 rounded-lg transition-all transform hover:scale-105 shadow-lg">
+                    了解湖大
+                </a>
+                <a href="#admissions" class="bg-transparent border-2 border-white text-white hover:bg-white/10 font-semibold px-8 py-3 rounded-lg transition-all transform hover:scale-105">
+                    招生咨询
+                </a>
+            </div>
+        </div>
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-white animate-bounce">
+            <a href="#about" class="text-3xl">
+                <i class="fa fa-chevron-down"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- 学校简介 -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.8rem,5vw,3rem)] font-bold text-primary mb-4">学校简介</h2>
+                <div class="w-24 h-1 bg-secondary mx-auto"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="fade-in">
+                    <h3 class="text-2xl font-bold mb-6 text-primary">湖北大学：历史悠久的综合性大学</h3>
+                    <p class="text-lg mb-4 leading-relaxed">
+                        湖北大学是湖北省属重点综合性大学，位于湖北省武汉市，是湖北省人民政府与教育部共建高校、湖北省属高校首个国家重点实验室依托单位、湖北省“国内一流大学建设高校”。
+                    </p>
+                    <p class="text-lg mb-4 leading-relaxed">
+                        学校创办于1931年，历经湖北省立教育学院、华中师范学院等多个发展阶段，1984年更名湖北大学，2013年获批湖北省属高校首个国家重点实验室。
+                    </p>
+                    <p class="text-lg mb-6 leading-relaxed">
+                        学校现有武昌主校区、阳逻校区，总占地面积近2000亩。设有23个学科性学院，本科专业83个，覆盖哲、经、法、教、文、史、理、工、农、医、管、艺等12大学科门类。
+                    </p>
+                    <div class="flex flex-wrap gap-6">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary mr-3">
+                                <i class="fa fa-graduation-cap text-xl"></i>
+                            </div>
+                            <div>
+                                <p class="font-bold text-primary text-xl">20000+</p>
+                                <p class="text-gray-600">在校学生</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary mr-3">
+                                <i class="fa fa-book text-xl"></i>
+                            </div>
+                            <div>
+                                <p class="font-bold text-primary text-xl">83+</p>
+                                <p class="text-gray-600">本科专业</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary mr-3">
+                                <i class="fa fa-users text-xl"></i>
+                            </div>
+                            <div>
+                                <p class="font-bold text-primary text-xl">1500+</p>
+                                <p class="text-gray-600">教职工</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="img-hover-zoom rounded-xl overflow-hidden shadow-2xl fade-in" style="animation-delay: 0.3s">
+                    <img src="https://picsum.photos/id/1025/800/600" alt="湖北大学校园" class="w-full h-auto">
+                </div>
+            </div>
+            
+            <!-- 学科建设 -->
+            <div class="mt-20">
+                <h3 class="text-2xl font-bold mb-8 text-center text-primary">学科建设</h3>
+                <div class="bg-light rounded-xl p-6 shadow-lg">
+                    <canvas id="disciplinesChart" height="300"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 校园风光 -->
+    <section id="campus" class="py-20 bg-light">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.8rem,5vw,3rem)] font-bold text-primary mb-4">校园风光</h2>
+                <div class="w-24 h-1 bg-secondary mx-auto mb-6"></div>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    湖北大学校园环境优美，被誉为"最美校园"之一，四季景色各异，人文气息浓厚。
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- 校园图片1 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg group hover:shadow-xl transition-shadow img-hover-zoom">
+                    <img src="https://picsum.photos/id/1019/600/400" alt="湖北大学图书馆" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-primary mb-2 group-hover:text-secondary transition-colors">图书馆</h3>
+                        <p class="text-gray-600">
+                            学校图书馆藏书丰富，是学生学习和研究的重要场所，现代化设施齐全。
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- 校园图片2 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg group hover:shadow-xl transition-shadow img-hover-zoom">
+                    <img src="https://picsum.photos/id/1039/600/400" alt="湖北大学教学楼" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-primary mb-2 group-hover:text-secondary transition-colors">教学楼群</h3>
+                        <p class="text-gray-600">
+                            现代化的教学楼配备先进的教学设备，为师生提供良好的教学环境。
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- 校园图片3 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg group hover:shadow-xl transition-shadow img-hover-zoom">
+                    <img src="https://picsum.photos/id/1043/600/400" alt="湖北大学校园湖泊" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-primary mb-2 group-hover:text-secondary transition-colors">校园湖泊</h3>
+                        <p class="text-gray-600">
+                            湖大以水为名，校园内湖泊环绕，风景秀丽，是学习和休憩的理想之地。
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- 校园图片4 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg group hover:shadow-xl transition-shadow img-hover-zoom">
+                    <img src="https://picsum.photos/id/1059/600/400" alt="湖北大学体育馆" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-primary mb-2 group-hover:text-secondary transition-colors">体育馆</h3>
+                        <p class="text-gray-600">
+                            设施完善的体育馆为学生提供多样化的体育活动选择，促进身心健康发展。
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- 校园图片5 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg group hover:shadow-xl transition-shadow img-hover-zoom">
+                    <img src="https://picsum.photos/id/1063/600/400" alt="湖北大学宿舍区" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-primary mb-2 group-hover:text-secondary transition-colors">学生宿舍</h3>
+                        <p class="text-gray-600">
+                            舒适的学生宿舍配备齐全，营造温馨的生活环境，让学生感受到家的温暖。
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- 校园图片6 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg group hover:shadow-xl transition-shadow img-hover-zoom">
+                    <img src="https://picsum.photos/id/1068/600/400" alt="湖北大学校园道路" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-primary mb-2 group-hover:text-secondary transition-colors">校园大道</h3>
+                        <p class="text-gray-600">
+                            绿树成荫的校园大道，四季风景各异，是师生日常漫步的好去处。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 学院设置 -->
+    <section id="colleges" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.8rem,5vw,3rem)] font-bold text-primary mb-4">学院设置</h2>
+                <div class="w-24 h-1 bg-secondary mx-auto mb-6"></div>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    湖北大学设有23个学科性学院，学科门类齐全，覆盖广泛，为学生提供多元化的学习选择。
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- 学院1 -->
+                <div class="bg-light rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow border-l-4 border-primary">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary mr-3">
+                            <i class="fa fa-laptop"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-primary">计算机与信息工程学院</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        涵盖计算机科学与技术、软件工程、信息安全等多个专业，培养信息技术领域的高级人才。
+                    </p>
+                    <a href="#" class="text-primary hover:text-secondary transition-colors font-medium flex items-center">
+                        了解更多 <i class="fa fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                
+                <!-- 学院2 -->
+                <div class="bg-light rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow border-l-4 border-primary">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary mr-3">
+                            <i class="fa fa-flask"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-primary">化学化工学院</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        拥有化学、应用化学、化学工程与工艺等专业，在化学研究领域具有较强实力。
+                    </p>
+                    <a href="#" class="text-primary hover:text-secondary transition-colors font-medium flex items-center">
+                        了解更多 <i class="fa fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                
+                <!-- 学院3 -->
+                <div class="bg-light rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow border-l-4 border-primary">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary mr-3">
+                            <i class="fa fa-balance-scale"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-primary">商学院</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        包含经济学、金融学、会计学、市场营销等专业，培养具有国际视野的商科人才。
+                    </p>
+                    <a href="#" class="text-primary hover:text-secondary transition-colors font-medium flex items-center">
+                        了解更多 <i class="fa fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                
+                <!-- 学院4 -->
+                <div class="bg-light rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow border-l-4 border-primary">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary mr-3">
+                            <i class="fa fa-book"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-primary">文学院</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        设有汉语言文学、新闻学、广告学等专业，在人文社科领域具有深厚积淀。
+                    </p>
+                    <a href="#" class="text-primary hover:text-secondary transition-colors font-medium flex items-center">
+                        了解更多 <i class="fa fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                
+                <!-- 学院5 -->
+                <div class="bg-light rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow border-l-4 border-primary">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary mr-3">
+                            <i class="fa fa-calculator"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-primary">数学与统计学学院</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        涵盖数学与应用数学、信息与计算科学、统计学等专业，注重理论与应用结合。
+                    </p>
+                    <a href="#" class="text-primary hover:text-secondary transition-colors font-medium flex items-center">
+                        了解更多 <i class="fa fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                
+                <!-- 学院6 -->
+                <div class="bg-light rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow border-l-4 border-primary">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary mr-3">
+                            <i class="fa fa-futbol-o"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-primary">体育学院</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        拥有体育教育、社会体育指导与管理等专业，培养体育教学和管理人才。
+                    </p>
+                    <a href="#" class="text-primary hover:text-secondary transition-colors font-medium flex items-center">
+                        了解更多 <i class="fa fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="text-center mt-10">
+                <a href="#" class="inline-block bg-primary hover:bg-primary/90 text-white font-semibold px-8 py-3 rounded-lg transition-all transform hover:scale-105 shadow-md">
+                    查看全部学院 <i class="fa fa-chevron-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 招生信息 -->
+    <section id="admissions" class="py-20 bg-primary/5">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.8rem,5vw,3rem)] font-bold text-primary mb-4">招生信息</h2>
+                <div class="w-24 h-1 bg-secondary mx-auto mb-6"></div>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    湖北大学面向全国招生，提供多种招生渠道和奖学金政策，欢迎优秀学子报考。
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-10">
+                <!-- 招生数据 -->
+                <div class="bg-white rounded-xl shadow-lg p-8">
+                    <h3 class="text-2xl font-bold text-primary mb-6">招生概况</h3>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">本科招生计划</span>
+                                <span class="text-primary font-bold">5200人</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div class="bg-primary h-2.5 rounded-full" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">研究生招生计划</span>
+                                <span class="text-primary font-bold">2100人</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div class="bg-primary h-2.5 rounded-full" style="width: 65%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">国际学生招生</span>
+                                <span class="text-primary font-bold">300人</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div class="bg-primary h-2.5 rounded-full" style="width: 40%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <h4 class="text-xl font-bold text-primary mb-4">历年录取分数线</h4>
+                        <canvas id="admissionsChart" height="200"></canvas>
+                    </div>
+                </div>
+                
+                <!-- 招生政策 -->
+                <div>
+                    <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
+                        <h3 class="text-2xl font-bold text-primary mb-6">招生政策</h3>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <div class="mt-1 w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary mr-3 flex-shrink-0">
+                                    <i class="fa fa-check"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg mb-1">普通高考招生</h4>
+                                    <p class="text-gray-600">按照高考成绩和志愿录取，各专业录取分数线不同。</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="mt-1 w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary mr-3 flex-shrink-0">
+                                    <i class="fa fa-check"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg mb-1">自主招生</h4>
+                                    <p class="text-gray-600">对具有学科特长和创新潜质的学生提供特殊录取通道。</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="mt-1 w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary mr-3 flex-shrink-0">
+                                    <i class="fa fa-check"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg mb-1">艺术类招生</h4>
+                                    <p class="text-gray-600">针对音乐、美术等艺术特长学生，结合专业考试和高考成绩录取。</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="mt-1 w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary mr-3 flex-shrink-0">
+                                    <i class="fa fa-check"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg mb-1">专项计划</h4>
+                                    <p class="text-gray-600">面向贫困地区和农村学生的专项招生计划，提供更多入学机会。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 奖学金信息 -->
+                    <div class="bg-white rounded-xl shadow-lg p-8">
+                        <h3 class="text-2xl font-bold text-primary mb-6">奖学金设置</h3>
+                        
+                        <ul class="space-y-3">
+                            <li class="flex items-center">
+                                <i class="fa fa-trophy text-secondary mr-3"></i>
+                                <span>国家奖学金：8000元/年</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fa fa-trophy text-secondary mr-3"></i>
+                                <span>国家励志奖学金：5000元/年</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fa fa-trophy text-secondary mr-3"></i>
+                                <span>湖北大学一等奖学金：3000元/年</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fa fa-trophy text-secondary mr-3"></i>
+                                <span>湖北大学二等奖学金：2000元/年</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fa fa-trophy text-secondary mr-3"></i>
+                                <span>湖北大学三等奖学金：1000元/年</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fa fa-trophy text-secondary mr-3"></i>
+                                <span>专项奖学金：根据不同项目设置</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系我们 -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.8rem,5vw,3rem)] font-bold text-primary mb-4">联系我们</h2>
+                <div class="w-24 h-1 bg-secondary mx-auto mb-6"></div>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    如有任何疑问或需要进一步了解湖北大学的信息，请通过以下方式与我们联系。
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-10">
+                <!-- 联系信息 -->
+                <div>
+                    <div class="bg-light rounded-xl p-8 shadow-lg mb-8">
+                        <h3 class="text-2xl font-bold text-primary mb-6">联系方式</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary mr-4 flex-shrink-0">
+                                    <i class="fa fa-map-marker"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold mb-1">学校地址</h4>
+                                    <p class="text-gray-600">湖北省武汉市武昌区友谊大道368号</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary mr-4 flex-shrink-0">
+                                    <i class="fa fa-phone"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold mb-1">联系电话</h4>
+                                    <p class="text-gray-600">招生办公室：027-88661111</p>
+                                    <p class="text-gray-600">学校办公室：027-88661000</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary mr-4 flex-shrink-0">
+                                    <i class="fa fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold mb-1">电子邮箱</h4>
+                                    <p class="text-gray-600">招生咨询：zs@hbu.edu.cn</p>
+                                    <p class="text-gray-600"> general@hbu.edu.cn</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 社交媒体 -->
+                    <div class="bg-light rounded-xl p-8 shadow-lg">
+                        <h3 class="text-2xl font-bold text-primary mb-6">关注我们</h3>
+                        
+                        <div class="flex space-x-4">
+                            <a href="#" class="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center hover:bg-primary/80 transition-colors">
+                                <i class="fa fa-weixin text-xl"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center hover:bg-primary/80 transition-colors">
+                                <i class="fa fa-weibo text-xl"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center hover:bg-primary/80 transition-colors">
+                                <i class="fa fa-qq text-xl"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center hover:bg-primary/80 transition-colors">
+                                <i class="fa fa-youtube-play text-xl"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center hover:bg-primary/80 transition-colors">
+                                <i class="fa fa-instagram text-xl"></i>
+                            </a>
+                        </div>
+                        
+                        <div class="mt-6">
+                            <img src="https://picsum.photos/id/1074/200/200" alt="湖北大学微信公众号二维码" class="w-40 h-40 object-cover rounded-lg">
+                            <p class="mt-2 text-gray-600">微信公众号：湖北大学</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 联系表单 -->
+                <div class="bg-light rounded-xl p-8 shadow-lg">
+                    <h3 class="text-2xl font-bold text-primary mb-6">发送咨询</h3>
+                    
+                    <form id="contact-form" class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="block text-gray-700 font-medium mb-2">姓名</label>
+                                <input type="text" id="name" name="name" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors" placeholder="请输入您的姓名" required>
+                            </div>
+                            
+                            <div>
+                                <label for="email" class="block text-gray-700 font-medium mb-2">邮箱</label>
+                                <input type="email" id="email" name="email" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors" placeholder="请输入您的邮箱" required>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label for="phone" class="block text-gray-700 font-medium mb-2">电话</label>
+                            <input type="tel" id="phone" name="phone" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors" placeholder="请输入您的电话">
+                        </div>
+                        
+                        <div>
+                            <label for="subject" class="block text-gray-700 font-medium mb-2">咨询主题</label>
+                            <select id="subject" name="subject" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors" required>
+                                <option value="" disabled selected>请选择咨询主题</option>
+                                <option value="admissions">招生咨询</option>
+                                <option value="academic">学术咨询</option>
+                                <option value="international">国际交流</option>
+                                <option value="facilities">校园设施</option>
+                                <option value="other">其他问题</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label for="message" class="block text-gray-700 font-medium mb-2">咨询内容</label>
+                            <textarea id="message" name="message" rows="5" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors" placeholder="请输入您的咨询内容" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-primary hover:bg-primary/90 text-white font-semibold px-6 py-3 rounded-lg transition-all transform hover:scale-[1.02] shadow-md">
+                            发送咨询 <i class="fa fa-paper-plane ml-2"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-primary text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">湖北大学</h3>
+                    <p class="mb-4 text-white/80">
+                        博学 笃行 立己 达人
+                    </p>
+                    <p class="text-white/80">
+                        湖北省属重点综合性大学
+                    </p>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4">快速链接</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#about" class="text-white/80 hover:text-white transition-colors">学校简介</a></li>
+                        <li><a href="#colleges" class="text-white/80 hover:text-white transition-colors">学院设置</a></li>
+                        <li><a href="#admissions" class="text-white/80 hover:text-white transition-colors">招生信息</a></li>
+                        <li><a href="#" class="text-white/80 hover:text-white transition-colors">学术研究</a></li>
+                        <li><a href="#" class="text-white/80 hover:text-white transition-colors">国际交流</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4">资源中心</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-white/80 hover:text-white transition-colors">图书馆</a></li>
+                        <li><a href="#" class="text-white/80 hover:text-white transition-colors">教务处</a></li>
+                        <li><a href="#" class="text-white/80 hover:text-white transition-colors">学生处</a></li>
+                        <li><a href="#" class="text-white/80 hover:text-white transition-colors">就业指导中心</a></li>
+                        <li><a href="#" class="text-white/80 hover:text-white transition-colors">校园网</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4">联系我们</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fa fa-map-marker mr-2"></i>
+                            <span class="text-white/80">武汉市武昌区友谊大道368号</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-phone mr-2"></i>
+                            <span class="text-white/80">027-88661000</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-envelope mr-2"></i>
+                            <span class="text-white/80">general@hbu.edu.cn</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-white/20 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-white/80">© 2023 湖北大学 版权所有</p>
+                <div class="flex space-x-4 mt-4 md:mt-0">
+                    <a href="#" class="text-white/80 hover:text-white transition-colors">
+                        <i class="fa fa-weixin text-xl"></i>
+                    </a>
+                    <a href="#" class="text-white/80 hover:text-white transition-colors">
+                        <i class="fa fa-weibo text-xl"></i>
+                    </a>
+                    <a href="#" class="text-white/80 hover:text-white transition-colors">
+                        <i class="fa fa-qq text-xl"></i>
+                    </a>
+                    <a href="#" class="text-white/80 hover:text-white transition-colors">
+                        <i class="fa fa-youtube-play text-xl"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 返回顶部按钮 -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg transform transition-transform scale-0 hover:bg-primary/90">
+        <i class="fa fa-chevron-up"></i>
+    </button>
+
+    <!-- JavaScript -->
+    <script>
+        // 导航栏滚动效果
+        const navbar = document.getElementById('navbar');
+        const backToTop = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                navbar.classList.add('navbar-scrolled');
+                navbar.classList.remove('bg-transparent');
+                navbar.querySelector('span').classList.remove('text-white');
+                navbar.querySelector('span').classList.add('text-primary');
+                
+                // 更改导航链接颜色
+                const navLinks = navbar.querySelectorAll('a:not(.flex)');
+                navLinks.forEach(link => {
+                    link.classList.remove('text-white');
+                    link.classList.add('text-primary');
+                });
+                
+                // 显示返回顶部按钮
+                backToTop.classList.remove('scale-0');
+                backToTop.classList.add('scale-100');
+            } else {
+                navbar.classList.remove('navbar-scrolled');
+                navbar.classList.add('bg-transparent');
+                navbar.querySelector('span').classList.add('text-white');
+                navbar.querySelector('span').classList.remove('text-primary');
+                
+                // 恢复导航链接颜色
+                const navLinks = navbar.querySelectorAll('a:not(.flex)');
+                navLinks.forEach(link => {
+                    link.classList.add('text-white');
+                    link.classList.remove('text-primary');
+                });
+                
+                // 隐藏返回顶部按钮
+                backToTop.classList.remove('scale-100');
+                backToTop.classList.add('scale-0');
+            }
+        });
+        
+        // 移动端菜单切换
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuToggle.addEventListener('click', function() {
+            mobileMenu.classList.toggle('hidden');
+            const icon = menuToggle.querySelector('i');
+            if (icon.classList.contains('fa-bars')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+        
+        // 点击移动端菜单项后关闭菜单
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                mobileMenu.classList.add('hidden');
+                const icon = menuToggle.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            });
+        });
+        
+        // 返回顶部功能
+        backToTop.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // 学科建设图表
+        const disciplinesCtx = document.getElementById('disciplinesChart').getContext('2d');
+        const disciplinesChart = new Chart(disciplinesCtx, {
+            type: 'bar',
+            data: {
+                labels: ['工学', '理学', '文学', '管理学', '经济学', '法学', '教育学', '艺术学'],
+                datasets: [{
+                    label: '专业数量',
+                    data: [18, 12, 10, 9, 6, 4, 3, 5],
+                    backgroundColor: [
+                        'rgba(10, 77, 162, 0.8)',
+                        'rgba(10, 77, 162, 0.7)',
+                        'rgba(10, 77, 162, 0.6)',
+                        'rgba(10, 77, 162, 0.5)',
+                        'rgba(10, 77, 162, 0.4)',
+                        'rgba(10, 77, 162, 0.3)',
+                        'rgba(10, 77, 162, 0.2)',
+                        'rgba(10, 77, 162, 0.1)'
+                    ],
+                    borderColor: [
+                        'rgba(10, 77, 162, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    title: {
+                        display: true,
+                        text: '各学科门类专业数量分布',
+                        font: {
+                            size: 16
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: '专业数量'
+                        }
+                    }
+                }
+            }
+        });
+        
+        // 招生分数线图表
+        const admissionsCtx = document.getElementById('admissionsChart').getContext('2d');
+        const admissionsChart = new Chart(admissionsCtx, {
+            type: 'line',
+            data: {
+                labels: ['2018', '2019', '2020', '2021', '2022', '2023'],
+                datasets: [{
+                    label: '理科录取线',
+                    data: [542, 548, 553, 559, 564, 570],
+                    borderColor: 'rgba(10, 77, 162, 1)',
+                    backgroundColor: 'rgba(10, 77, 162, 0.1)',
+                    tension: 0.3,
+                    fill: true
+                }, {
+                    label: '文科录取线',
+                    data: [568, 572, 578, 583, 589, 595],
+                    borderColor: 'rgba(230, 162, 60, 1)',
+                    backgroundColor: 'rgba(230, 162, 60, 0.1)',
+                    tension: 0.3,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: '近六年湖北省录取分数线',
+                        font: {
+                            size: 14
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        title: {
+                            display: true,
+                            text: '分数线'
+                        }
+                    }
+                }
+            }
+        });
+        
+        // 联系表单提交处理
+        const contactForm = document.getElementById('contact-form');
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // 模拟表单提交
+            const submitButton = contactForm.querySelector('button[type="submit"]');
+            const originalText = submitButton.innerHTML;
+            
+            submitButton.disabled = true;
+            submitButton.innerHTML = '<i class="fa fa-spinner fa-spin mr-2"></i> 发送中...';
+            
+            setTimeout(function() {
+                // 显示成功消息
+                alert('您的咨询已成功发送，我们将尽快回复您！');
+                
+                // 重置表单
+                contactForm.reset();
+                
+                // 恢复按钮状态
+                submitButton.disabled = false;
+                submitButton.innerHTML = originalText;
+            }, 1500);
+        });
+        
+        // 滚动动画
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const fadeInObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+        
+        fadeElements.forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(20px)';
+            element.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
+            fadeInObserver.observe(element);
+        });
+    </script>
+</body>
+</html>
