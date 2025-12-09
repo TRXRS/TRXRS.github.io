@@ -1,0 +1,880 @@
+/* 全局样式重置 - 重置浏览器默认样式，确保跨浏览器一致性 */
+* {
+    margin: 0;          /* 移除所有元素的默认外边距 */
+    padding: 0;         /* 移除所有元素的默认内边距 */
+    box-sizing: border-box; /* 使用box-sizing属性使元素宽度包含padding和border */
+}
+
+/* HTML基础设置 */
+html {
+    scroll-behavior: smooth; /* 启用平滑滚动效果 */
+}
+
+/* 页面主体样式 */
+body {
+    font-family: 'Noto Sans SC', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* 设置字体 */
+    line-height: 1.6;       /* 设置行高 */
+    color: #333;            /* 设置默认文字颜色 */
+    background-color: #f8f5f2; /* 设置页面背景色为温暖的米色 */
+}
+
+/* 容器样式 - 用于限制内容宽度并居中 */
+.container {
+    width: 100%;            /* 宽度100% */
+    max-width: 1200px;      /* 最大宽度1200px */
+    margin: 0 auto;         /* 水平居中 */
+    padding: 0 20px;        /* 左右内边距 */
+}
+
+/* 导航栏样式 - 固定在顶部的导航 */
+#main-nav {
+    background-color: rgba(255, 255, 255, 0.9); /* 导航栏半透明背景色 */
+    backdrop-filter: blur(5px); /* 背景模糊效果 */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); /* 添加轻微阴影 */
+    position: fixed;        /* 固定定位 */
+    top: 0;                 /* 顶部对齐 */
+    left: 0;                /* 左侧对齐 */
+    right: 0;               /* 右侧对齐 */
+    z-index: 1000;          /* 设置z-index确保在其他元素上方 */
+    transition: all 0.3s ease; /* 过渡效果 */
+}
+
+/* 导航链接列表样式 */
+.nav-links {
+    list-style: none;       /* 移除列表样式 */
+    display: flex;          /* 使用flex布局 */
+    gap: 30px;              /* 链接之间的间距 */
+}
+
+/* 导航链接样式 */
+.nav-links a {
+    color: #666;            /* 链接颜色 */
+    text-decoration: none;  /* 移除下划线 */
+    font-weight: 500;       /* 设置字体粗细 */
+    transition: color 0.3s ease; /* 颜色过渡效果 */
+    padding: 20px 0;        /* 上下内边距 */
+    display: inline-block;  /* 确保padding生效 */
+}
+
+/* 导航链接悬停效果 */
+.nav-links a:hover {
+    color: #e96656;         /* 悬停时颜色变化为温暖的红色 */
+}
+
+/* 导航栏容器布局 */
+#main-nav .container {
+    display: flex;          /* 使用flex布局 */
+    justify-content: space-between; /* 两端对齐 */
+    align-items: center;    /* 垂直居中对齐 */
+}
+
+/* Logo样式 */
+.logo {
+    font-size: 24px;        /* 字体大小 */
+    font-weight: 700;       /* 字体粗细 */
+    color: #e96656;         /* Logo颜色 */
+    letter-spacing: 1px;      /* 字母间距 */
+    display: flex;
+    align-items: center;    
+}
+/* Logo图片样式 */
+.logo-img {
+    height: 40px;
+    border-radius: 10px;           /* 高度 */
+}
+
+
+
+/* 移动端菜单按钮样式 - 默认隐藏 */
+.menu-toggle {
+    display: none;          /* 默认不显示 */
+    background: none;       /* 无背景 */
+    border: none;           /* 无边框 */
+    cursor: pointer;        /* 鼠标指针为手型 */
+    padding: 10px;          /* 内边距 */
+}
+
+/* 汉堡菜单的线条样式 */
+.bar {
+    display: block;         /* 块级元素 */
+    width: 25px;            /* 宽度 */
+    height: 3px;            /* 高度 */
+    margin: 5px auto;       /* 外边距 */
+    background-color: #666; /* 颜色 */
+    transition: all 0.3s ease; /* 所有属性过渡效果 */
+}
+/* 巨幕样式 - 网站首屏展示区域 */
+.hero-section {
+    height: 100vh;          /* 高度为视口高度 */
+    display: flex;          /* 使用flex布局 */
+    align-items: center;    /* 垂直居中 */
+    justify-content: center; /* 水平居中 */
+    text-align: center;     /* 文字居中 */
+    background-color: #fff9f5; /* 温暖的米色背景 */
+    color: #333;            /* 文字颜色 */
+    margin-top: 60px;       /* 顶部margin，避免被导航栏遮挡 */
+    position: relative;
+    overflow: hidden;
+}
+
+/* 巨幕装饰元素 */
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 10%;
+    right: 10%;
+width: 150px;
+    height: 150px;
+    background-image: url('../img/camera-icon.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.1;
+    transform: rotate(15deg);
+}
+/* 巨幕装饰元素 */
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 10%;
+    right: 10%;
+    width: 150px;
+height: 150px;
+    background-image: url('../img/H5网页素材15.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.1;
+    transform: rotate(15deg);
+}
+
+/* 巨幕装饰元素 */
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 10%;
+    right: 10%;
+    width: 150px;
+    height: 150px;
+    background-image: url('../img/H5网页素材15.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.1;
+    transform: rotate(15deg);
+}
+
+/* 巨幕标题样式 */
+.hero-section h1 {
+    font-size: 3.5rem;      /* 字体大小 */
+    margin-bottom: 20px;    /* 底部外边距 */
+    line-height: 1.2;       /* 行高 */
+    color: #333;
+    font-weight: 700;
+}
+
+/* 巨幕副标题样式 */
+.hero-section p {
+    font-size: 1.5rem;      /* 字体大小 */
+    margin-bottom: 30px;    /* 底部外边距 */
+    opacity: 0.8;           /* 透明度 */
+    color: #666;
+}
+
+/* 按钮通用样式 */
+.btn-primary, .btn-secondary {
+    display: inline-block;  /* 行内块元素 */
+    padding: 12px 30px;     /* 内边距 */
+    font-size: 16px;        /* 字体大小 */
+    font-weight: 600;       /* 字体粗细 */
+    text-decoration: none;  /* 移除下划线 */
+    border-radius: 4px;     /* 圆角 */
+    transition: all 0.3s ease; /* 所有属性过渡效果 */
+}
+
+/* 主按钮样式 */
+.btn-primary {
+    background-color: #e96656; /* 温暖的红色背景 */
+    color: #fff;            /* 文字颜色 */
+    border: 2px solid #e96656; /* 边框 */
+}
+
+/* 主按钮悬停效果 */
+.btn-primary:hover {
+    background-color: #d85546; /* 悬停背景色 */
+    border-color: #d85546;   /* 悬停边框色 */
+    transform: translateY(-2px); /* 上移效果 */
+    box-shadow: 0 5px 15px rgba(233, 102, 86, 0.3); /* 添加阴影 */
+}
+
+/* 影像故事部分样式 */
+.stories-section {
+    padding: 100px 0;       /* 上下内边距 */
+    background-color: #fff; /* 背景色 */
+}
+
+/* 板块标题通用样式 */
+.section-title {
+    text-align: center;     /* 文字居中 */
+    font-size: 2.5rem;      /* 字体大小 */
+    margin-bottom: 50px;    /* 底部外边距 */
+    color: #333;            /* 文字颜色 */
+    position: relative;     /* 相对定位，用于伪元素 */
+    font-weight: 700;
+}
+
+/* 板块标题下方装饰线 */
+.section-title::after {
+    content: '';            /* 内容为空 */
+    display: block;         /* 块级元素 */
+    width: 80px;            /* 宽度 */
+    height: 3px;            /* 高度 */
+    background-color: #e96656; /* 颜色 */
+    margin: 20px auto 0;    /* 外边距 */
+}
+
+/* 故事块样式 */
+.story-block {
+    margin-bottom: 80px;
+    position: relative;
+}
+
+/* 故事标题样式 */
+.story-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.story-header h3 {
+    font-size: 1.8rem;
+    color: #333;
+margin-right: 15px;
+}
+
+/* 装饰线样式 */
+.decoration-line {
+    flex-grow: 1;
+    height: 2px;
+    background-color: #e96656;
+}
+
+.decoration-line.blue {
+    background-color: #56a8e9;
+}
+
+.decoration-line.purple {
+    background-color: #a856e9;
+}
+
+.decoration-line.yellow {
+    background-color: #e9d356;
+}
+
+/* 故事内容样式 */
+.story-content {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.story-text p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #666;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* 故事图片画廊 */
+.story-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+/* 故事图片卡片 */
+.story-image-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+    background-color: #fff;
+    padding: 15px;
+    transform: rotate(var(--rotate, 0deg));
+}
+
+.story-image-card:nth-child(2n) {
+    --rotate: 2deg;
+    top: 10px;
+}
+
+.story-image-card:nth-child(3n) {
+    --rotate: -1deg;
+    top: -5px;
+}
+
+.story-image-card:hover {
+    transform: rotate(var(--rotate, 0deg)) translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* 故事图片样式 */
+.story-img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: transform 0.5s ease;
+}
+
+.story-image-card:hover .story-img {
+    transform: scale(1.05);
+}
+
+/* 访谈部分样式 */
+.interviews-section {
+    padding: 60px 0 0; /* 移除底部内边距，因为卡片之间会有足够空间 */
+    background-color: #fafafa;
+}
+
+/* 访谈容器 - 修改为垂直排列 */
+.interviews-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0; /* 移除卡片间的间隙，因为每个卡片都会占据整个视口 */
+}
+
+/* 访谈卡片样式 - 修改为全屏高度 */
+.interview-card {
+    background-color: #fff;
+    border-radius: 0; /* 移除圆角，全屏显示不需要 */
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: none; /* 移除悬停效果，因为是全屏展示 */
+    padding: 80px 20px;
+    min-height: 100vh; /* 确保每个卡片至少占据整个视口高度 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 0; /* 移除底部外边距 */
+}
+
+/* 移除悬停效果 */
+.interview-card:hover {
+    transform: none;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+/* 调整卡片内部容器 */
+.interview-card .container {
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* 访谈标题样式 - 增大字号和间距 */
+.interview-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.star-icon {
+    width: 32px;
+    height: 32px;
+    background-color: #e9d356;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    margin-right: 15px;
+}
+
+.interview-header h3 {
+    font-size: 2rem;
+    color: #333;
+    font-weight: 700;
+}
+
+/* 访谈引述样式 - 增大字号和间距 */
+.interview-quote {
+    margin-bottom: 50px;
+}
+
+.interview-quote p {
+    font-size: 1.5rem;
+    line-height: 1.8;
+    color: #666;
+    margin-bottom: 20px;
+    position: relative;
+    padding-left: 0;
+    text-align: center;
+}
+
+/* 移除左侧引号，改为居中显示 */
+.interview-quote p::before {
+    display: none;
+}
+
+/* 为每个段落添加上下引号 */
+.interview-quote p::before {
+    content: '"';
+    font-size: 3rem;
+    color: #e96656;
+    opacity: 0.3;
+    display: inline-block;
+    margin-right: 10px;
+    vertical-align: top;
+}
+
+.interview-quote p::after {
+    content: '"';
+    font-size: 3rem;
+    color: #e96656;
+    opacity: 0.3;
+    display: inline-block;
+    margin-left: 10px;
+    vertical-align: bottom;
+}
+
+.no-wrap-quote {
+    white-space: nowrap;
+    text-align: center !important;
+}
+
+/* 高亮引述样式 */
+.highlight-quote {
+    font-weight: 600;
+    color: #e96656 !important;
+    font-size: 1.8rem !important;
+    margin: 30px 0;
+}
+
+/* 访谈图片样式 - 调整大小和布局 */
+.interview-image {
+    border-radius: 12px;
+    overflow: hidden;
+    max-width: 80%;
+    margin: 0 auto;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.interview-img {
+    width: 100%;
+    height: auto;
+    max-height: 50vh;
+    object-fit: cover;
+    transition: none; /* 移除缩放效果 */
+}
+
+/* 移除图片悬停效果 */
+.interview-card:hover .interview-img {
+    transform: none;
+}
+
+/* 为不同访谈卡片添加不同背景色，增加视觉区分 */
+.interview-card:nth-child(odd) {
+    background-color: #fff;
+}
+
+.interview-card:nth-child(even) {
+    background-color: #f8f5f2;
+}
+
+/* 响应式设计调整 */
+@media (max-width: 992px) {
+    .interview-card {
+        padding: 60px 20px;
+    }
+    
+    .interview-header h3 {
+        font-size: 1.8rem;
+    }
+    
+    .interview-quote p {
+        font-size: 1.3rem;
+    }
+    
+    .highlight-quote {
+        font-size: 1.5rem !important;
+    }
+    
+    .interview-image {
+        max-width: 90%;
+    }
+}
+
+@media (max-width: 768px) {
+    .interview-card {
+        padding: 50px 15px;
+    }
+    
+    .interview-header {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .star-icon {
+        margin-right: 0;
+    }
+    
+    .interview-header h3 {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+    
+    .interview-quote p {
+        font-size: 1.2rem;
+    }
+    
+    .highlight-quote {
+        font-size: 1.3rem !important;
+    }
+    
+    .interview-image {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 576px) {
+    .interview-quote p {
+        font-size: 1.1rem;
+        line-height: 1.7;
+    }
+    
+    .highlight-quote {
+        font-size: 1.2rem !important;
+    }
+}
+
+/* 诗歌与结语部分样式 */
+.poem-section {
+    padding: 100px 0;
+    background-color: #f8f5f2;
+    background-image: url('../img/H5网页素材22.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: relative;
+}
+
+.poem-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+.poem-section::after {
+    content: '';
+    position: absolute;
+    bottom: 20%;
+    left: 5%;
+    width: 100px;
+    height: 100px;
+    background-image: url('../img/star.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.1;
+}
+
+/* 诗歌内容样式 */
+.poem-content {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.poem-content p {
+    font-size: 1.2rem;
+    line-height: 2;
+    color: #333;
+    margin-bottom: 10px;
+    font-weight: 300;
+}
+
+/* 诗歌签名样式 */
+.poem-signature {
+    margin-top: 50px;
+}
+
+.poem-signature p:first-child {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #e96656;
+    margin-bottom: 10px;
+}
+
+.poem-signature p:last-child {
+    font-size: 1.2rem;
+    color: #999;
+    font-style: italic;
+}
+
+/* 页脚样式 */
+.footer-section {
+    background-color: #333;
+    color: #fff;
+    padding: 60px 0 30px;
+}
+
+/* 页脚内容容器 */
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+/* 页脚各部分通用样式 */
+.footer-info, .footer-links, .footer-contact {
+    flex: 1;
+    min-width: 200px;
+}
+
+/* 页脚信息标题样式 */
+.footer-info h3 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #e96656;
+}
+
+/* 页脚链接和联系信息标题样式 */
+.footer-links h4, .footer-contact h4 {
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+/* 页脚链接列表样式 */
+.footer-links ul {
+    list-style: none;
+}
+
+/* 页脚链接列表项样式 */
+.footer-links li {
+    margin-bottom: 10px;
+}
+
+/* 页脚链接样式 */
+.footer-links a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+/* 页脚链接悬停效果 */
+.footer-links a:hover {
+    color: #e96656;
+}
+
+/* 页脚联系信息样式 */
+.footer-contact p {
+    margin-bottom: 10px;
+    color: #ccc;
+}
+
+/* 版权信息样式 */
+.copyright {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #444;
+    color: #999;
+    font-size: 0.9rem;
+}
+
+/* 响应式设计 - 平板设备 */
+@media (max-width: 992px) {
+    /* 调整巨幕标题大小 */
+    .hero-section h1 {
+        font-size: 2.8rem;
+    }
+    
+    /* 调整巨幕副标题大小 */
+    .hero-section p {
+        font-size: 1.3rem;
+    }
+    
+    /* 访谈容器改为2列 */
+    .interviews-container {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+    
+    /* 故事图片画廊调整 */
+    .story-gallery {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+}
+
+/* 响应式设计 - 移动设备 */
+@media (max-width: 768px) {
+    /* 导航链接调整为侧边栏 */
+    .nav-links {
+        position: fixed;
+        top: 60px;
+        right: -100%;
+        flex-direction: column;
+        background-color: #fff;
+        width: 80%;
+        height: calc(100vh - 60px);
+        text-align: center;
+        transition: 0.3s;
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        padding: 40px 0;
+    }
+    
+    /* 侧边栏显示状态 */
+    .nav-links.active {
+        right: 0;
+    }
+    
+    /* 侧边栏链接项间距 */
+    .nav-links li {
+        margin: 20px 0;
+    }
+    
+    /* 显示移动端菜单按钮 */
+    .menu-toggle {
+        display: block;
+    }
+    
+    /* 汉堡菜单按钮激活状态 - 中间线条消失 */
+    .menu-toggle.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+    
+    /* 汉堡菜单按钮激活状态 - 上线条旋转 */
+    .menu-toggle.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    
+    /* 汉堡菜单按钮激活状态 - 下线条旋转 */
+    .menu-toggle.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+    
+    /* 调整巨幕标题大小 */
+    .hero-section h1 {
+        font-size: 2.2rem;
+    }
+    
+    /* 调整巨幕副标题大小 */
+    .hero-section p {
+        font-size: 1.1rem;
+    }
+    
+    /* 调整板块标题大小 */
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    /* 页脚内容改为垂直布局 */
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    /* 故事标题改为垂直排列 */
+    .story-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .story-header h3 {
+        margin-bottom: 10px;
+    }
+    
+    /* 访谈容器改为单列 */
+    .interviews-container {
+        grid-template-columns: 1fr;
+    }
+    
+    /* 诗歌字体调整 */
+    .poem-content p {
+        font-size: 1rem;
+    }
+}
+
+/* 响应式设计 - 小屏移动设备 */
+@media (max-width: 576px) {
+    /* 进一步调整巨幕标题大小 */
+    .hero-section h1 {
+        font-size: 1.8rem;
+    }
+    
+    /* 故事图片画廊改为单列 */
+    .story-gallery {
+        grid-template-columns: 1fr;
+    }
+    
+    /* 故事图片卡片统一角度 */
+    .story-image-card {
+        transform: rotate(0deg);
+        top: 0;
+    }
+    
+    .story-image-card:nth-child(2n),
+    .story-image-card:nth-child(3n) {
+        --rotate: 0deg;
+        top: 0;
+    }
+}
+
+/* 二维码容器样式 */
+.qrcode-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* 二维码图片样式 */
+.footer-qrcode {
+    width: 120px;
+    height: 120px;
+    border: 2px solid #444;
+    border-radius: 8px;
+    background-color: #fff;
+    padding: 5px;
+    transition: transform 0.3s ease;
+}
+
+/* 二维码悬停效果 */
+.footer-qrcode:hover {
+    transform: scale(1.05);
+}
+
+/* 二维码文字说明 */
+.qrcode-text {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #ccc;
+}
+
+/* 移动设备上的二维码响应式样式 */
+@media (max-width: 768px) {
+    .footer-info {
+        text-align: center;
+    }
+    
+    .footer-qrcode {
+        width: 100px;
+        height: 100px;
+        margin: 0 auto;
+    }
+}
+
+/* 小屏移动设备进一步优化 */
+@media (max-width: 480px) {
+    .footer-qrcode {
+        width: 90px;
+        height: 90px;
+    }
+    
+    .qrcode-text {
+        font-size: 0.8rem;
+    }
+}
